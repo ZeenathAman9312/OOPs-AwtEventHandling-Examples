@@ -1,0 +1,241 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class CardLayoutDemo extends Frame implements ActionListener {
+		Button b1,b2,b3;
+		Checkbox c1,c2,c3,c4,c5,c6,c7,c8,c9;
+		Panel osCards;
+		CardLayout cardLO;
+
+	public CardLayoutDemo() {
+		setLayout(new FlowLayout());
+		b1=new Button("Windows");
+		b2=new Button("Other");
+		b3=new Button("Browser");
+		add(b1);
+		add(b2);
+		add(b3);
+		//set osCards panel to use cardlayout.
+		cardLO=new CardLayout();
+		osCards=new Panel();
+		osCards.setLayout(cardLO);
+		
+		c1=new Checkbox("Windows 7",true);
+		c2=new Checkbox("Windows 8");
+		c3=new Checkbox("Windows 10");
+		c4=new Checkbox("Android");
+		c5=new Checkbox("Solaris");
+		c6=new Checkbox("Mac OS");
+		c7=new Checkbox("Internet Explorer");
+		c8=new Checkbox("Chrome");
+		c9=new Checkbox("Mozila");
+		Panel winPan=new Panel();
+		winPan.add(c1);
+		winPan.add(c2);
+		winPan.add(c3);
+
+		Panel otherPan=new Panel();
+		otherPan.add(c4);
+		otherPan.add(c5);
+		otherPan.add(c6);
+		
+		Panel browser=new Panel();
+		browser.add(c7);
+		browser.add(c8);
+		browser.add(c9);
+		
+		//add panels to card deck panel.
+		osCards.add(winPan,"Windows");
+		osCards.add(otherPan,"Other");
+		osCards.add(browser,"Browser");
+
+		//add cards to main frame panel
+		add(osCards);
+		
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+	/*	addMouseListener(new MouseAdapter() {
+			public void mousePressed(ActionEvent ae) {
+				cardLO.next(osCards);
+			}
+		});
+	*/	
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent we) {
+				System.exit(0);
+			}
+		});
+		
+	}
+	public static void main(String args[]) {
+		CardLayoutDemo appwin=new CardLayoutDemo();
+		appwin.setSize(new Dimension(400,300));
+		appwin.setTitle("CardLayoutDemo");
+		appwin.setVisible(true);	
+		appwin.setBackground(Color.cyan);
+	}
+	public void actionPerformed(ActionEvent ae) {
+		String s=ae.getActionCommand();
+		if(s.equals("Windows"))
+			cardLO.show(osCards,"Windows");
+		else if(s.equals("Other"))
+			cardLO.show(osCards,"Other");
+		else
+			cardLO.show(osCards,"Browser");
+	}
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+		import java.awt.*;
+import java.awt.event.*;
+
+public class CardLayoutDemo extends Frame implements ActionListener {
+		Button b1,b2,b3;
+		Checkbox c1,c2,c3,c4,c5,c6,c7,c8,c9;
+		Panel osCards;
+		CardLayout cardLO;
+
+	public CardLayoutDemo() {
+		setLayout(new FlowLayout());
+		b1=new Button("Windows");
+		b2=new Button("Other");
+		b3=new Button("Browser");
+		add(b1);
+		add(b2);
+		add(b3);
+		//set osCards panel to use cardlayout.
+		cardLO=new CardLayout();
+		osCards=new Panel();
+		osCards.setLayout(cardLO);
+		
+		c1=new Checkbox("Windows 7",true);
+		c2=new Checkbox("Windows 8");
+		c3=new Checkbox("Windows 10");
+		c4=new Checkbox("Android");
+		c5=new Checkbox("Solaris");
+		c6=new Checkbox("Mac OS");
+		c7=new Checkbox("Internet Explorer");
+		c8=new Checkbox("Chrome");
+		c9=new Checkbox("Mozila");
+		Panel winPan=new Panel();
+		winPan.add(c1);
+		winPan.add(c2);
+		winPan.add(c3);
+
+		Panel otherPan=new Panel();
+		otherPan.add(c4);
+		otherPan.add(c5);
+		otherPan.add(c6);
+		
+		Panel browser=new Panel();
+		browser.add(c7);
+		browser.add(c8);
+		browser.add(c9);
+		
+		//add panels to card deck panel.
+		osCards.add(winPan,"Windows");
+		osCards.add(otherPan,"Other");
+		osCards.add(browser,"Browser");
+
+		//add cards to main frame panel
+		add(osCards);
+		
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+	/*	addMouseListener(new MouseAdapter() {
+			public void mousePressed(ActionEvent ae) {
+				cardLO.next(osCards);
+			}
+		});
+	*/	
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent we) {
+				System.exit(0);
+			}
+		});
+		
+	}
+	public static void main(String args[]) {
+		CardLayoutDemo appwin=new CardLayoutDemo();
+		appwin.setSize(new Dimension(400,300));
+		appwin.setTitle("CardLayoutDemo");
+		appwin.setVisible(true);	
+		appwin.setBackground(Color.cyan);
+	}
+	public void actionPerformed(ActionEvent ae) {
+		String s=ae.getActionCommand();
+		if(s.equals("Windows"))
+			cardLO.show(osCards,"Windows");
+		else if(s.equals("Other"))
+			cardLO.show(osCards,"Other");
+		else
+			cardLO.show(osCards,"Browser");
+	}
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+		

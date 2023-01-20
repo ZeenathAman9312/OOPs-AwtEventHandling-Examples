@@ -1,0 +1,28 @@
+Consider the college database. Retrieve all students who have registered for a specific course and store their details into another table using Cursors.
+    /* create table student(stno int, stname varchar(20), reg_course varchar(20), feepaid numeric)  */
+    /*  insert records into table  */
+    /* create table temp(stno int,stname varchar(20) */  --  to store student details in temp table--
+    
+    delimiter //   
+    create procedure get_details(in x varchar(20))
+    begin
+    declare  flag int default 0;
+    declare  snum  int default 0;
+    declare  sname varchar(20);
+    declare  ins_cur cursor for select stno, stname from student where reg_course=x;
+    declare continue handler for not found set flag=1;
+    open ins_cur;
+    getRec: LOOP
+            fetch ins_cur into snum,sname;
+            if flag=1 then
+               LEAVE getRec;
+            end if;
+            insert into temp values(snum,sname);
+            END  LOOP  getRec;
+    close ins_cur;
+    end //
+    delimiter ;
+    call get_details('Java');
+    select * from temp;          
+   
+

@@ -1,0 +1,82 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class Calculator extends Frame implements ActionListener {
+	TextField number1,number2,result;
+	Button Add,Sub,Mul,Div,reset;
+	Label l1,l2,l3;
+	public Calculator() {
+		setLayout(null);
+		number1=new TextField(10);
+		number2=new TextField(10);
+		result=new TextField(10);
+		l1=new Label("Enter Integer 1");
+		l2=new Label("Enter Integer 2");
+		l3=new Label("Result");
+		Add=new Button("Add");
+		Sub=new Button("Sub");
+		Mul=new Button("Mul");
+		Div=new Button("Div");
+		reset=new Button("Reset");
+		l1.setBounds(30,30,100,20);
+		l2.setBounds(30,60,100,20);
+		l3.setBounds(30,90,100,20);
+		number1.setBounds(140,30,60,20);
+		number2.setBounds(140,60,60,20);
+		result.setBounds(140,90,60,20);
+		Add.setBounds(30,110,30,20);
+		Sub.setBounds(70,110,30,20);
+		Mul.setBounds(110,110,30,20);
+		Div.setBounds(150,110,30,20);
+		reset.setBounds(190,110,40,20);
+		add(number1);
+		add(number2);
+		add(result);
+		add(l1);
+		add(l2);
+		add(l3);
+		add(Add);
+		add(Sub);
+		add(Mul);
+		add(Div);
+		add(reset);
+		Add.addActionListener(this);
+		Sub.addActionListener(this);
+		Mul.addActionListener(this);
+		Div.addActionListener(this);
+		reset.addActionListener(this);
+		addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent we) {
+					System.exit(0);
+				}
+		});
+	}
+	public void actionPerformed(ActionEvent ae) {
+		String s=ae.getActionCommand();
+		int a=Integer.parseInt(number1.getText());
+		int b=Integer.parseInt(number2.getText());
+		if(s.equals("Add"))	
+			result.setText(String.valueOf(a+b));
+		else if(s.equals("Sub"))
+			result.setText(String.valueOf(a-b));
+		else if(s.equals("Mul"))
+			result.setText(String.valueOf(a*b));
+		else if(s.equals("Div"))
+			result.setText(String.valueOf(a/b));
+		else {
+			number1.setText("");
+			number2.setText("");
+			result.setText("");
+		}
+	}
+
+	public static void main(String args[]) {
+		Calculator appwin=new Calculator();
+		appwin.setSize(new Dimension(500,500));
+		appwin.setTitle("Calculator demo");
+		appwin.setVisible(true);
+		Font f=new Font("Dialog",Font.BOLD,16);
+		appwin.setFont(f);
+		appwin.setBackground(Color.cyan);
+	}
+}
